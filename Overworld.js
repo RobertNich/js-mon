@@ -3,37 +3,41 @@ class Overworld {
     this.element = config.element;
     this.canvas = this.element.querySelector(".game-canvas");
     this.ctx = this.canvas.getContext("2d");
+    this.map = null;
+  }
+
+  startGameLoop() {
+    const step = () => {
+      // clear the canvas
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+      // draw the bottom layer
+      this.map.drawLowerImage(this.ctx);
+
+      // draw any game objects
+      Object.values(this.map.gameObjects).forEach((object) => {
+        object.update({
+          vector: this.directionInput.direction,
+        });
+        object.sprite.draw(this.ctx);
+      });
+
+      // draw the upper layer
+      this.map.drawUpperImage(this.ctx);
+
+      requestAnimationFrame(() => {
+        step();
+      });
+    };
+    step();
   }
 
   init() {
-    const image = new Image();
-    image.onload = () => {
-      this.ctx.drawImage(image, 0, 0);
-    };
-    image.src = "/images/maps/test-bg.png";
+    this.map = new OverworldMap(window.OverworldMaps.TestLevel);
 
-    // current sprite sheet has a 1px border, might remove in the future.
-    const xOffset = 1;
-    const yOffset = 1;
+    this.directionInput = new DirectionInput();
+    this.directionInput.init();
 
-    // Place some Game Objects
-    const player = new GameObject({
-      x: 5,
-      y: 6,
-      xOffset: xOffset + 113,
-      yOffset: yOffset,
-    });
-
-    const policeMan = new GameObject({
-      x: 10,
-      y: 10,
-      xOffset: xOffset,
-      yOffset: yOffset,
-    });
-
-    setTimeout(() => {
-      player.sprite.draw(this.ctx);
-      policeMan.sprite.draw(this.ctx);
-    }, 200);
+    this.startGameLoop();
   }
 }

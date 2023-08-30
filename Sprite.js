@@ -19,8 +19,8 @@ class Sprite {
   }
 
   draw(ctx) {
-    const x = this.gameObject.x * 16 - 8;
-    const y = this.gameObject.y * 16 - 18;
+    const x = this.gameObject.x - 17;
+    const y = this.gameObject.y - 20;
     const xOffset = this.gameObject.xOffset;
     const yOffset = this.gameObject.yOffset;
 
