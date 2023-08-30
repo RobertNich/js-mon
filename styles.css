@@ -3,22 +3,50 @@
 }
 
 body {
-  background: #333;
+  background: #625399;
   padding: 0;
   margin: 0;
   overflow: hidden;
 }
 
 .game-container {
-  position: relative;
   width: 352px;
   height: 198px;
   margin: 0 auto;
-  outline: 5px dashed #000;
-
-  transform: scale(3) translateY(50%);
+  transform: scale(3);
+  position: relative;
+  top: 270px;
 }
 
 .game-container canvas {
   image-rendering: pixelated;
+  border-radius: 2px;
+}
+
+.screen-bezel {
+  border-bottom: 800px solid #000000;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-radius: 10%;
+
+  width: 1200px;
+  height: 0;
+
+  position: relative;
+  top: 20px;
+}
+
+.bezel-logo {
+  position: relative;
+  top: 500px;
+  left: 35%;
+  width: 400px;
+}
+
+.test {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
