@@ -12,26 +12,28 @@ class Overworld {
     };
     image.src = "/images/maps/test-bg.png";
 
-    const x = 5;
-    const y = 6;
+    // current sprite sheet has a 1px border, might remove in the future.
+    const xOffset = 1;
+    const yOffset = 1;
 
-    const offsetX = 1;
-    const offsetY = 1;
+    // Place some Game Objects
+    const player = new GameObject({
+      x: 5,
+      y: 6,
+      xOffset: xOffset + 113,
+      yOffset: yOffset,
+    });
 
-    const hero = new Image();
-    hero.onload = () => {
-      this.ctx.drawImage(
-        hero,
-        offsetX + 113, //left cut
-        offsetY, //top cut,
-        14, //width of cut
-        20, //height of cut
-        x * 29, // x pos offset
-        y * 28, // y pos offset
-        14, // image x resolution
-        20 // image y resolution
-      );
-    };
-    hero.src = "/images/characters/character-sheet.png";
+    const policeMan = new GameObject({
+      x: 10,
+      y: 10,
+      xOffset: xOffset,
+      yOffset: yOffset,
+    });
+
+    setTimeout(() => {
+      player.sprite.draw(this.ctx);
+      policeMan.sprite.draw(this.ctx);
+    }, 200);
   }
 }
