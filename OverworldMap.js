@@ -24,18 +24,18 @@ window.OverworldMaps = {
     upperSrc: "",
     gameObjects: {
       player: new Person({
-        x: utils.withGrid(5),
-        y: utils.withGrid(6),
-        xOffset: 1 + 113,
+        x: utils.withGrid(7),
+        y: utils.withGrid(9),
+        xOffset: 0,
         yOffset: 1,
         isPlayerControlled: true,
       }),
-      policeMan: new Person({
+      /* policeMan: new Person({
         x: utils.withGrid(10),
         y: utils.withGrid(10),
-        xOffset: 1,
+        xOffset: 176,
         yOffset: 1,
-      }),
+      }), */
     },
   },
   // any other rooms with npcs that you'd like to load.
