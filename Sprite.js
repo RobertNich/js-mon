@@ -74,9 +74,9 @@ class Sprite {
     }
   }
 
-  draw(ctx) {
-    const x = this.gameObject.x - 17;
-    const y = this.gameObject.y - 20;
+  draw(ctx, cameraFocus) {
+    const x = this.gameObject.x - 17 + utils.withGrid(13) - cameraFocus.x;
+    const y = this.gameObject.y - 20 + utils.withGrid(8) - cameraFocus.y;
     const xOffset = this.gameObject.xOffset;
     const yOffset = this.gameObject.yOffset;
 
@@ -85,8 +85,8 @@ class Sprite {
     if (this.isLoaded) {
       ctx.drawImage(
         this.image, // which image to load.
-        xOffset + 16 * frameX, // sprite sheet x position
-        yOffset + 14 * frameY, // sprite sheet y position
+        xOffset + 16 * frameX, // sprite sheet x position (16 is the width of each cell)
+        yOffset + 20 * frameY, // sprite sheet y position (20 is the height of each cell)
         16, // sprite width
         20, // sprite height
         x, // sprites x pos in the world
