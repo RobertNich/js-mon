@@ -38,7 +38,7 @@ class Sprite {
         [3, 0],
       ],
     };
-    this.currentAnimation = "walk-down"; // config.currentAnimation || "idleDown";
+    this.currentAnimation = "idle-down";
     this.currentAnimationFrame = 0;
 
     this.animationFrameLimit = config.animationFrameLimi || 10;
@@ -80,7 +80,7 @@ class Sprite {
     const xOffset = this.gameObject.xOffset;
     const yOffset = this.gameObject.yOffset;
 
-    const [frameX, frameY, flip] = this.frame;
+    const [frameX, frameY] = this.frame;
 
     if (this.isLoaded) {
       ctx.drawImage(
