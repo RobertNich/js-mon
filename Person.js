@@ -21,7 +21,7 @@ class Person extends GameObject {
       state.vector
     ) {
       this.direction = state.vector;
-      this.movingProgressRemaining = 14;
+      this.movingProgressRemaining = 16;
     }
   }
 

@@ -9,12 +9,20 @@ class OverworldMap {
     this.upperImage.src = config.upperSrc;
   }
 
-  drawLowerImage(ctx) {
-    ctx.drawImage(this.lowerImage, 0, 0);
+  drawLowerImage(ctx, cameraFocus) {
+    ctx.drawImage(
+      this.lowerImage,
+      utils.withGrid(14) - cameraFocus.x,
+      utils.withGrid(8) - cameraFocus.y
+    );
   }
 
-  drawUpperImage(ctx) {
-    ctx.drawImage(this.upperImage, 0, 0);
+  drawUpperImage(ctx, cameraFocus) {
+    ctx.drawImage(
+      this.upperImage,
+      utils.withGrid(13) - cameraFocus.x,
+      utils.withGrid(8) - cameraFocus.y
+    );
   }
 }
 
@@ -24,8 +32,8 @@ window.OverworldMaps = {
     upperSrc: "",
     gameObjects: {
       player: new Person({
-        x: utils.withGrid(7),
-        y: utils.withGrid(9),
+        x: utils.withGrid(14),
+        y: utils.withGrid(24),
         xOffset: 0,
         yOffset: 1,
         isPlayerControlled: true,
