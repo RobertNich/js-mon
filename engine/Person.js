@@ -1,4 +1,5 @@
 import GameObject from "./GameObject.js";
+import { utils } from "./utils.js";
 
 export default class Person extends GameObject {
   constructor(config) {
@@ -19,7 +20,7 @@ export default class Person extends GameObject {
       this.updatePosition();
     } else {
       if (this.isPlayerControlled && state.vector) {
-        this.startBehavior(state, {
+        this.startBehaviour(state, {
           type: "walk",
           direction: state.vector,
         });
@@ -28,14 +29,23 @@ export default class Person extends GameObject {
     }
   }
 
-  startBehavior(state, behavior) {
-    this.direction = behavior.direction;
-    if (behavior.type === "walk") {
+  startBehaviour(state, behaviour) {
+    this.direction = behaviour.direction;
+    if (behaviour.type === "walk") {
       if (state.map.isSpaceTaken(this.x, this.y, this.direction)) {
         return;
       }
       state.map.moveWall(this.x, this.y, this.direction);
       this.movingProgressRemaining = 16;
+      this.updateSprite(state);
+    }
+
+    if (behaviour.type === "stand") {
+      setTimeout(() => {
+        utils.emitEvent("PersonStandingComplete", {
+          actorId: this.id,
+        });
+      }, behaviour.duration);
     }
   }
 
@@ -43,6 +53,12 @@ export default class Person extends GameObject {
     const [property, change] = this.directionUpdate[this.direction];
     this[property] += change;
     this.movingProgressRemaining -= 1;
+
+    if (this.movingProgressRemaining === 0) {
+      utils.emitEvent("PersonWalkingComplete", {
+        actorId: this.id,
+      });
+    }
   }
 
   updateSprite() {

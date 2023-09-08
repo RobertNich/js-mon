@@ -11,6 +11,8 @@ export default class OverworldMap {
 
     this.upperImage = new Image();
     this.upperImage.src = config.upperSrc;
+
+    this.isCutscenePlaying = false;
   }
 
   drawLowerImage(ctx, cameraFocus) {
@@ -35,7 +37,10 @@ export default class OverworldMap {
   }
 
   mountObjects() {
-    Object.values(this.gameObjects).forEach((object) => {
+    Object.keys(this.gameObjects).forEach((key) => {
+      let object = this.gameObjects[key];
+      object.id = key;
+
       object.mount(this);
     });
   }
