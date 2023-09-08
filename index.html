@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>JS Mon</title>
-    <link href="/styles.css" type="text/css" rel="stylesheet" />
+    <link href="./styles.css" type="text/css" rel="stylesheet" />
   </head>
   <body>
     <div class="test">
@@ -12,20 +12,20 @@
         </div>
         <img
           class="bezel-logo"
-          src="./images/gameboy/gameboy-logo.png"
+          src="./src/images/gameboy/gameboy-logo.png"
           alt="GBA"
         />
       </div>
     </div>
 
     <!-- Scripts -->
-    <script src="/utils.js"></script>
-    <script src="/DirectionInput.js"></script>
-    <script src="/Overworld.js"></script>
-    <script src="/GameObject.js"></script>
-    <script src="/Person.js"></script>
-    <script src="/Sprite.js"></script>
-    <script src="/OverworldMap.js"></script>
-    <script src="/init.js"></script>
+    <script type="module" src="./engine/utils.js"></script>
+    <script type="module" src="./engine//DirectionInput.js"></script>
+    <script type="module" src="./engine//Overworld.js"></script>
+    <script type="module" src="./engine//GameObject.js"></script>
+    <script type="module" src="./engine//Person.js"></script>
+    <script type="module" src="./engine//Sprite.js"></script>
+    <script type="module" src="./engine//OverworldMap.js"></script>
+    <script type="module" src="./init.js"></script>
   </body>
 </html>

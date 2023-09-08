@@ -1,4 +1,7 @@
-class Overworld {
+import OverworldMap from "./OverworldMap.js";
+import DirectionInput from "./DirectionInput.js";
+
+export default class Overworld {
   constructor(config) {
     this.element = config.element;
     this.canvas = this.element.querySelector(".game-canvas");
