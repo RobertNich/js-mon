@@ -1,4 +1,6 @@
-class Sprite {
+import { utils } from "./utils.js";
+
+export default class Sprite {
   constructor(config) {
     // Set up the image
     this.image = new Image();
