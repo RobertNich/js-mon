@@ -48,5 +48,23 @@ export default class Overworld {
     this.directionInput.init();
 
     this.startGameLoop();
+
+    this.map.startCutscene([
+      { actor: "player", type: "walk", direction: "up"},
+      { actor: "player", type: "walk", direction: "up"},
+      { actor: "policeMan", type: "walk", direction: "down"},
+      { actor: "policeMan", type: "walk", direction: "down"},
+      { actor: "policeMan", type: "walk", direction: "down"},
+      { actor: "policeMan", type: "walk", direction: "down"},
+      { actor: "policeMan", type: "walk", direction: "right"},
+      { actor: "policeMan", type: "walk", direction: "right"},
+      { actor: "policeMan", type: "walk", direction: "right"},
+      { actor: "may", type: "walk", direction: "left"},
+      { actor: "may", type: "walk", direction: "left"},
+      { actor: "may", type: "walk", direction: "left"},
+      { actor: "may", type: "walk", direction: "left"},
+      { actor: "may", type: "walk", direction: "left"},
+      { actor: "may", type: "walk", direction: "left"},
+    ])
   }
 }
