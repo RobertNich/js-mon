@@ -30,7 +30,7 @@ export default class GameObject {
   update() {}
 
   async doBehaviourEvent(map) {
-    if (map.isCutscenePlaying || this.behaviourLoop.length === 0) {
+    if (map.isCutscenePlaying || this.behaviourLoop.length === 0 || this.isStanding) {
       console.log(this.id);
       console.log("RETURNING ");
       return;
