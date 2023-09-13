@@ -19,7 +19,7 @@ export default class Person extends GameObject {
     if (this.movingProgressRemaining > 0) {
       this.updatePosition();
     } else {
-      if (this.isPlayerControlled && state.vector) {
+      if (!state.map.isCutscenePlaying && this.isPlayerControlled && state.vector) {
         this.startBehaviour(state, {
           type: "walk",
           direction: state.vector,
