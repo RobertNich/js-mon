@@ -6,6 +6,7 @@ export default class Person extends GameObject {
     super(config);
 
     this.movingProgressRemaining = 0;
+    this.isStanding = false;
     this.isPlayerControlled = config.isPlayerControlled || false;
     this.directionUpdate = {
       up: ["y", -1],
@@ -41,10 +42,12 @@ export default class Person extends GameObject {
     }
 
     if (behaviour.type === "stand") {
+      this.isStanding = true;
       setTimeout(() => {
         utils.emitEvent("PersonStandingComplete", {
           actorId: this.id,
         });
+        this.isStanding = false;
       }, behaviour.duration);
     }
   }
