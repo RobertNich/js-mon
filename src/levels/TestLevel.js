@@ -186,7 +186,7 @@ export const TestLevel = {
     may: new Person({
       x: utils.withGrid(21),
       y: utils.withGrid(20),
-      xOffset: 303,
+      xOffset: 384,
       yOffset: 1,
       behaviourLoop: [
         { type: "stand", direction: "down", duration: 300 },
